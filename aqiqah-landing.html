@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barakah Aqiqah — Layanan Aqiqah Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --sage: #6B8C6B;
+      --sage-light: #A8C5A0;
+      --sage-pale: #EAF1E8;
+      --cream: #FAF7F2;
+      --warm: #F3EDE3;
+      --earth: #8B6355;
+      --earth-dark: #5E3E30;
+      --gold: #C4963A;
+      --text: #1C1C1C;
+      --muted: #6B6B6B;
+      --white: #FFFFFF;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(107, 140, 107, 0.15);
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--sage);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--sage);
+    }
+
+    .nav-cta {
+      background: var(--sage);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover {
+      background: var(--earth);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 5% 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(107, 140, 107, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      font-weight: 600;
+      line-height: 1.18;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--sage);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(107, 140, 107, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--earth);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(107, 140, 107, 0.35);
+    }
+
+    .btn-secondary {
+      color: var(--sage);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1.5px solid var(--sage-light);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      color: var(--earth);
+      border-color: var(--earth);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 52px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(107, 140, 107, 0.2);
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--sage);
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .hero-card-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--sage-pale) 0%, var(--warm) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative SVG in hero card */
+    .hero-card-img svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .hero-card-body {
+      padding: 28px 28px 32px;
+    }
+
+    .card-tag {
+      display: inline-block;
+      background: var(--sage-pale);
+      color: var(--sage);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .hero-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-card-body p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .floating-badge {
+      position: absolute;
+      top: -18px;
+      right: 24px;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: 100px;
+      padding: 10px 18px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 16px rgba(196, 150, 58, 0.4);
+    }
+
+    .ornament {
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 100px;
+      height: 100px;
+      opacity: 0.15;
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--sage);
+      padding: 22px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .trust-icon {
+      font-size: 1.1rem;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    section {
+      padding: 96px 5%;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      font-weight: 300;
+      max-width: 540px;
+    }
+
+    /* ── LAYANAN ── */
+    #layanan {
+      background: var(--white);
+    }
+
+    .layanan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .layanan-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 36px 28px 32px;
+      border: 1px solid rgba(107, 140, 107, 0.12);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .layanan-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .layanan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+    }
+
+    .layanan-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .layanan-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--sage-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .layanan-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .layanan-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .layanan-price {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(107, 140, 107, 0.15);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .price-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--sage);
+    }
+
+    /* ── PROSES ── */
+    #proses {
+      background: var(--cream);
+    }
+
+    .proses-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .proses-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(107, 140, 107, 0.12);
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--sage-light);
+      line-height: 1;
+      min-width: 44px;
+      flex-shrink: 0;
+    }
+
+    .step h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .proses-visual {
+      background: linear-gradient(160deg, var(--sage-pale) 0%, var(--warm) 100%);
+      border-radius: 28px;
+      padding: 48px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proses-visual-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .proses-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--earth-dark);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+
+    .proses-quote-src {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .proses-deco {
+      margin: 28px auto;
+      width: 64px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .proses-visual-stamp {
+      display: inline-block;
+      background: var(--sage);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 16px 24px;
+      margin-top: 28px;
+    }
+
+    .stamp-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+
+    .stamp-label {
+      font-size: 0.78rem;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+
+    /* ── TESTIMONI ── */
+    #testimoni {
+      background: var(--white);
+    }
+
+    .testi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 52px;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testi-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid rgba(107, 140, 107, 0.1);
+      position: relative;
+    }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .testi-text {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--sage-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .testi-loc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .testi-quote-mark {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--sage-pale);
+      line-height: 1;
+    }
+
+    /* ── PAKET ── */
+    #paket {
+      background: var(--cream);
+    }
+
+    .paket-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .paket-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 32px 36px;
+      border: 1.5px solid rgba(107, 140, 107, 0.12);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .paket-card.featured {
+      background: var(--sage);
+      color: var(--white);
+      border-color: var(--sage);
+      box-shadow: 0 20px 64px rgba(107, 140, 107, 0.35);
+      transform: scale(1.03);
+    }
+
+    .paket-card:not(.featured):hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+    }
+
+    .paket-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .paket-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .paket-sub {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: 28px;
+    }
+
+    .paket-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .paket-price-note {
+      font-size: 0.8rem;
+      opacity: 0.65;
+      margin-bottom: 28px;
+    }
+
+    .paket-divider {
+      height: 1px;
+      background: rgba(107, 140, 107, 0.15);
+      margin: 24px 0;
+    }
+
+    .paket-card.featured .paket-divider {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .paket-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .paket-features li {
+      font-size: 0.88rem;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    .paket-features li::before {
+      content: '✓';
+      flex-shrink: 0;
+      color: var(--sage);
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    .paket-card.featured .paket-features li::before {
+      color: var(--gold);
+    }
+
+    .paket-btn {
+      display: block;
+      text-align: center;
+      margin-top: 32px;
+      padding: 14px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .paket-btn-outline {
+      border: 1.5px solid var(--sage);
+      color: var(--sage);
+    }
+
+    .paket-btn-outline:hover {
+      background: var(--sage);
+      color: var(--white);
+    }
+
+    .paket-btn-solid {
+      background: var(--white);
+      color: var(--sage);
+    }
+
+    .paket-btn-solid:hover {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--earth-dark) 0%, var(--earth) 50%, var(--sage) 100%);
+      padding: 100px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-primary {
+      background: var(--white);
+      color: var(--earth-dark);
+      padding: 15px 36px;
+      border-radius: 100px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-cta-wa {
+      background: #25D366;
+      color: var(--white);
+      padding: 15px 36px;
+      border-radius: 100px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .btn-cta-wa:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      padding: 64px 5% 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-brand .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .footer-brand .footer-logo span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .footer-brand p {
+      font-size: 0.87rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h5 {
+      color: var(--white);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--sage-light);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .footer-bottom .footer-socials {
+      display: flex;
+      gap: 14px;
+    }
+
+    .footer-social-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .footer-social-link:hover {
+      background: var(--sage);
+      color: var(--white);
+    }
+
+    /* ── FAQ ── */
+    #faq {
+      background: var(--white);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(107, 140, 107, 0.12);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 22px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--text);
+      gap: 16px;
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--sage-pale);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sage);
+      font-size: 1.1rem;
+      transition: transform 0.25s, background 0.2s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--sage);
+      color: var(--white);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 20px;
+    }
+
+    /* ── SCROLL ANIMATION ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+
+      .layanan-grid,
+      .testi-grid,
+      .paket-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .paket-card.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .layanan-grid,
+      .testi-grid,
+      .paket-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proses-layout,
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testi-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .trust-strip {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Barakah <span>Aqiqah</span></div>
+    <ul class="nav-links">
+      <li><a href="#layanan">Layanan</a></li>
+      <li><a href="#paket">Paket</a></li>
+      <li><a href="#proses">Cara Pesan</a></li>
+      <li><a href="#testimoni">Testimoni</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="https://wa.me/628123456789" class="nav-cta">Pesan Sekarang</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Layanan Aqiqah Terpercaya</div>
+      <h1>Sunnah yang <em>Indah,</em><br>Kami yang Urus</h1>
+      <p class="hero-desc">
+        Layanan aqiqah lengkap & amanah — dari pemilihan hewan terbaik, penyembelihan sesuai syariat, hingga pengiriman
+        ke pintu rumah Anda di hari yang Anda inginkan.
+      </p>
+      <div class="hero-actions">
+        <a href="#paket" class="btn-primary">Lihat Paket Aqiqah</a>
+        <a href="https://wa.me/628123456789" class="btn-secondary">Konsultasi Gratis →</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">2.400+</div>
+          <div class="stat-label">Keluarga dipercaya</div>
+        </div>
+        <div>
+          <div class="stat-num">8 th</div>
+          <div class="stat-label">Pengalaman melayani</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Sesuai syariat</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="floating-badge">⭐ Terpercaya Sejak 2016</div>
+        <div class="hero-card-img">
+          <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background gradient -->
+            <defs>
+              <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#EAF1E8" />
+                <stop offset="100%" style="stop-color:#F3EDE3" />
+              </linearGradient>
+              <linearGradient id="archGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#6B8C6B;stop-opacity:0.25" />
+                <stop offset="100%" style="stop-color:#6B8C6B;stop-opacity:0.05" />
+              </linearGradient>
+            </defs>
+            <rect width="460" height="320" fill="url(#bgGrad)" />
+            <!-- Arch motif -->
+            <path d="M130,280 L130,140 Q130,80 190,80 Q250,80 250,140 L250,280 Z" fill="url(#archGrad)" stroke="#6B8C6B"
+              stroke-width="1" stroke-opacity="0.3" />
+            <path d="M210,280 L210,150 Q210,100 260,100 Q310,100 310,150 L310,280 Z" fill="url(#archGrad)"
+              stroke="#6B8C6B" stroke-width="1" stroke-opacity="0.2" />
+            <!-- Stars -->
+            <circle cx="80" cy="60" r="3" fill="#C4963A" opacity="0.6" />
+            <circle cx="100" cy="40" r="2" fill="#C4963A" opacity="0.4" />
+            <circle cx="380" cy="80" r="3" fill="#C4963A" opacity="0.5" />
+            <circle cx="400" cy="55" r="2" fill="#C4963A" opacity="0.3" />
+            <!-- Geometric pattern top center -->
+            <polygon points="230,20 240,36 224,36" fill="none" stroke="#6B8C6B" stroke-width="1.2" opacity="0.5" />
+            <polygon points="230,24 237,34 223,34" fill="#6B8C6B" opacity="0.15" />
+            <!-- Arabic calligraphy style text placeholder -->
+            <text x="230" y="186" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#5E3E30"
+              opacity="0.7" font-style="italic">بِسْمِ اللهِ</text>
+            <text x="230" y="214" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#6B8C6B"
+              opacity="0.8">Bismillah · Sah Sesuai Syariat</text>
+            <!-- Decorative line -->
+            <line x1="160" y1="228" x2="300" y2="228" stroke="#C4963A" stroke-width="0.8" opacity="0.5" />
+            <circle cx="230" cy="228" r="3" fill="#C4963A" opacity="0.5" />
+            <!-- Bottom ornament -->
+            <path d="M60,300 Q230,260 400,300" stroke="#6B8C6B" stroke-width="1" fill="none" opacity="0.2" />
+          </svg>
+        </div>
+        <div class="hero-card-body">
+          <span class="card-tag">Paket Tersedia</span>
+          <h3>Aqiqah 1 Kambing – Rp 1.350.000</h3>
+          <p>Termasuk hewan kurban pilihan, penyembelihan bersertifikat, bumbu rempah, dan pengiriman area Jabodetabek.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item"><span class="trust-icon">🕌</span> Disembelih sesuai syariat Islam</div>
+    <div class="trust-item"><span class="trust-icon">🚚</span> Pengiriman tepat waktu</div>
+    <div class="trust-item"><span class="trust-icon">📜</span> Sertifikat aqiqah resmi</div>
+    <div class="trust-item"><span class="trust-icon">📸</span> Dokumentasi foto & video</div>
+    <div class="trust-item"><span class="trust-icon">💬</span> Konsultasi 24 jam via WhatsApp</div>
+  </div>
+
+  <!-- LAYANAN -->
+  <section id="layanan">
+    <p class="section-eyebrow fade-up">Apa yang Kami Tawarkan</p>
+    <h2 class="section-title fade-up">Layanan <em>Lengkap</em> dari<br>Hulu ke Hilir</h2>
+    <p class="section-sub fade-up">Kami menyiapkan seluruh rangkaian aqiqah dengan penuh ketelitian, agar Anda bisa
+      fokus pada momen bahagia bersama keluarga.</p>
+    <div class="layanan-grid">
+      <div class="layanan-card fade-up">
+        <div class="layanan-icon">🐑</div>
+        <h3>Pemilihan Hewan</h3>
+        <p>Kambing dan domba pilihan dari peternak amanah, memenuhi syarat sah aqiqah — sehat, cukup umur, dan tidak
+          cacat.</p>
+        <div class="layanan-price">
+          <span class="price-label">Mulai</span>
+          <span class="price-val">Rp 1.350.000</span>
+        </div>
+      </div>
+      <div class="layanan-card fade-up">
+        <div class="layanan-icon">⚔️</div>
+        <h3>Penyembelihan Syar'i</h3>
+        <p>Dilakukan oleh juru sembelih bersertifikat MUI, dengan pembacaan doa dan niat yang benar sesuai ketentuan
+          Islam.</p>
+        <div class="layanan-price">
+          <span class="price-label">Termasuk dalam</span>
+          <span class="price-val">Semua Paket</span>
+        </div>
+      </div>
+      <div class="layanan-card fade-up">
+        <div class="layanan-icon">🍖</div>
+        <h3>Masak & Olah</h3>
+        <p>Diolah oleh chef berpengalaman dengan rempah pilihan — gulai, sate, tongseng, atau sesuai permintaan. Siap
+          saji, siap hidangkan.</p>
+        <div class="layanan-price">
+          <span class="price-label">Mulai</span>
+          <span class="price-val">Rp 150.000</span>
+        </div>
+      </div>
+      <div class="layanan-card fade-up">
+        <div class="layanan-icon">📦</div>
+        <h3>Packing & Distribusi</h3>
+        <p>Dikemas rapi dalam box eksklusif beserta kartu ucapan bertuliskan nama bayi, siap dibagikan kepada tetangga &
+          kerabat.</p>
+        <div class="layanan-price">
+          <span class="price-label">Termasuk dalam</span>
+          <span class="price-val">Paket Premium</span>
+        </div>
+      </div>
+      <div class="layanan-card fade-up">
+        <div class="layanan-icon">🚚</div>
+        <h3>Pengiriman Langsung</h3>
+        <p>Pengiriman area Jabodetabek & Bandung. Di luar area, tersedia opsi pengiriman via ekspedisi dengan pengemasan
+          khusus.</p>
+        <div class="layanan-price">
+          <span class="price-label">Gratis untuk</span>
+          <span class="price-val">Jabodetabek</span>
+        </div>
+      </div>
+      <div class="layanan-card fade-up">
+        <div class="layanan-icon">📜</div>
+        <h3>Sertifikat & Dokumentasi</h3>
+        <p>Dapatkan sertifikat aqiqah resmi & dokumentasi foto/video prosesi penyembelihan sebagai kenangan berharga
+          keluarga.</p>
+        <div class="layanan-price">
+          <span class="price-label">Termasuk dalam</span>
+          <span class="price-val">Paket Premium</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROSES -->
+  <section id="proses">
+    <p class="section-eyebrow fade-up">Cara Pesan</p>
+    <h2 class="section-title fade-up">Mudah, <em>Praktis,</em><br>Tanpa Ribet</h2>
+    <div class="proses-layout">
+      <div class="proses-steps fade-up">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h4>Hubungi Kami via WhatsApp</h4>
+            <p>Ceritakan kebutuhan Anda — tanggal pelaksanaan, jumlah pax, dan lokasi pengiriman. Kami siap membantu
+              konsultasi tanpa biaya.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h4>Pilih Paket & Konfirmasi</h4>
+            <p>Tentukan paket yang sesuai. Kami akan mengirimkan detail penawaran lengkap beserta rekening pembayaran.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h4>Lakukan Pembayaran</h4>
+            <p>DP 50% untuk konfirmasi pesanan. Transfer via bank BCA, Mandiri, atau QRIS. Kami kirimkan bukti
+              penerimaan pesanan.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <h4>Terima Hasil di Rumah Anda</h4>
+            <p>Hari H, kami laksanakan penyembelihan & pengolahan. Hasilnya dikirim tepat waktu ke alamat Anda, lengkap
+              dengan sertifikat.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proses-visual fade-up">
+        <div class="proses-visual-inner">
+          <p
+            style="font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:16px;">
+            Dari Al-Quran</p>
+          <p class="proses-quote">"Sesungguhnya Kami telah memberikan kepadamu nikmat yang banyak. Maka dirikanlah
+            shalat karena Tuhanmu, dan berkurbanlah."</p>
+          <p class="proses-quote-src">QS. Al-Kautsar: 1–2</p>
+          <div class="proses-deco"></div>
+          <p style="font-size:0.88rem; color:var(--muted); line-height:1.7;">Aqiqah adalah bentuk syukur atas kelahiran
+            sang buah hati — sunnah Rasulullah ﷺ yang menjadi berkah bagi keluarga.</p>
+          <div class="proses-visual-stamp">
+            <div class="stamp-num">2.400+</div>
+            <div class="stamp-label">Keluarga telah menitipkan amanah aqiqah kepada kami</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAKET -->
+  <section id="paket">
+    <p class="section-eyebrow fade-up">Pilihan Paket</p>
+    <h2 class="section-title fade-up">Paket <em>Lengkap</em> Sesuai<br>Kebutuhan Keluarga</h2>
+    <p class="section-sub fade-up">Semua paket sudah mencakup hewan pilihan, penyembelihan syar'i, dan pengiriman area
+      Jabodetabek.</p>
+    <div class="paket-grid">
+      <!-- Paket 1 -->
+      <div class="paket-card fade-up">
+        <div class="paket-name">Paket Hemat</div>
+        <div class="paket-sub">1 Kambing · Anak Laki-laki / Perempuan</div>
+        <div class="paket-price">Rp 1.350.000</div>
+        <div class="paket-price-note">Harga sudah termasuk ongkos kirim Jabodetabek</div>
+        <div class="paket-divider"></div>
+        <ul class="paket-features">
+          <li>1 ekor kambing pilihan</li>
+          <li>Penyembelihan sesuai syariat</li>
+          <li>Daging mentah bersih & dikemas</li>
+          <li>Pengiriman area Jabodetabek</li>
+          <li>Bukti penyembelihan (foto)</li>
+        </ul>
+        <a href="https://wa.me/628123456789" class="paket-btn paket-btn-outline">Pesan Paket Ini</a>
+      </div>
+
+      <!-- Paket Featured -->
+      <div class="paket-card featured fade-up">
+        <div class="paket-badge">Paling Diminati</div>
+        <div class="paket-name">Paket Premium</div>
+        <div class="paket-sub">2 Kambing · Anak Laki-laki (Sunnah)</div>
+        <div class="paket-price">Rp 2.550.000</div>
+        <div class="paket-price-note">Lengkap masak + packing siap bagi</div>
+        <div class="paket-divider"></div>
+        <ul class="paket-features">
+          <li>2 ekor kambing pilihan</li>
+          <li>Penyembelihan sesuai syariat</li>
+          <li>Masak gulai / sate / tongseng</li>
+          <li>Packing box 50 porsi + kartu nama bayi</li>
+          <li>Sertifikat aqiqah resmi</li>
+          <li>Dokumentasi foto & video</li>
+          <li>Pengiriman area Jabodetabek</li>
+        </ul>
+        <a href="https://wa.me/628123456789" class="paket-btn paket-btn-solid">Pesan Paket Ini</a>
+      </div>
+
+      <!-- Paket Custom -->
+      <div class="paket-card fade-up">
+        <div class="paket-name">Paket Custom</div>
+        <div class="paket-sub">Sesuaikan dengan kebutuhan Anda</div>
+        <div class="paket-price">Hubungi Kami</div>
+        <div class="paket-price-note">Harga tergantung jumlah & lokasi</div>
+        <div class="paket-divider"></div>
+        <ul class="paket-features">
+          <li>Jumlah hewan fleksibel</li>
+          <li>Olahan sesuai permintaan</li>
+          <li>Pengiriman luar Jabodetabek</li>
+          <li>Catering lengkap tersedia</li>
+          <li>Konsultasi menu & budget</li>
+          <li>Layanan area Indonesia</li>
+        </ul>
+        <a href="https://wa.me/628123456789" class="paket-btn paket-btn-outline">Konsultasi Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONI -->
+  <section id="testimoni">
+    <div class="testi-header fade-up">
+      <div>
+        <p class="section-eyebrow">Kata Mereka</p>
+        <h2 class="section-title">Ribuan Keluarga<br>Telah <em>Mempercayai</em> Kami</h2>
+      </div>
+      <a href="https://wa.me/628123456789" class="btn-secondary" style="white-space:nowrap">Lihat semua ulasan →</a>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Aqiqah anak kedua kami sangat lancar. Dagingnya bersih, packagingnya rapi, dan tiba tepat
+          waktu sebelum acara syukuran. Sertifikatnya juga jadi kenangan indah buat kami.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Rizky & Hana</div>
+            <div class="testi-loc">Bekasi · Aqiqah Putra, Feb 2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Amanah sekali. Dari awal konsultasi sampai hari H semuanya dikomunikasikan dengan baik.
+          Dokumentasi videonya mengharukan, bisa kami simpan untuk anak kami kelak.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--earth)">F</div>
+          <div>
+            <div class="testi-name">Fariz & Nadia</div>
+            <div class="testi-loc">Jakarta Selatan · Aqiqah Putri, Jan 2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Pertama kali pakai jasa aqiqah online dan sangat puas. Masakannya enak, porsinya pas, dan
+          tamu kami semua minta nomor kontak Barakah Aqiqah. Pasti repeat order!</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--gold)">D</div>
+          <div>
+            <div class="testi-name">Dina & Arman</div>
+            <div class="testi-loc">Tangerang · Aqiqah Putra, Des 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="faq-layout">
+      <div class="fade-up">
+        <p class="section-eyebrow">FAQ</p>
+        <h2 class="section-title">Pertanyaan yang <em>Sering</em> Ditanyakan</h2>
+        <p class="section-sub" style="margin-bottom:32px;">Tidak menemukan jawaban yang Anda cari? Hubungi kami langsung
+          via WhatsApp.</p>
+        <a href="https://wa.me/628123456789" class="btn-primary" style="display:inline-block">Chat via WhatsApp</a>
+      </div>
+      <div class="faq-list fade-up">
+        <div class="faq-item open">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Berapa hari sebelumnya harus memesan?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">Kami menyarankan pemesanan minimal 3–5 hari sebelum tanggal pelaksanaan agar persiapan
+            dapat dilakukan dengan optimal. Namun untuk kebutuhan mendadak (H-1 atau H-2), silakan hubungi kami langsung
+            — kami akan usahakan semaksimal mungkin.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Apakah boleh melihat proses penyembelihan?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">Tentu boleh. Anda bisa hadir langsung di lokasi kami, atau kami akan mengirimkan video
+            dokumentasi penyembelihan secara real-time via WhatsApp pada hari pelaksanaan.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Kambing seperti apa yang digunakan?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">Kami menggunakan kambing lokal berkualitas yang memenuhi syarat sah aqiqah: berusia
+            minimal 1 tahun, sehat, tidak cacat fisik, dan telah diperiksa oleh dokter hewan. Semua hewan berasal dari
+            peternak rekanan kami yang telah bersertifikat.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Apakah ada layanan di luar Jabodetabek?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">Ada. Untuk area Bandung dan Bogor, kami melayani pengiriman langsung. Untuk kota
+            lainnya, daging dapat dikirim via ekspedisi dengan pengemasan vakum khusus agar tetap segar. Silakan
+            konsultasikan lokasi Anda dengan tim kami.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Bagaimana sistem pembayarannya?
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-answer">Pembayaran dilakukan dengan DP 50% saat konfirmasi pesanan, dan pelunasan dapat
+            dilakukan setelah prosesi aqiqah selesai dan hasil sudah dikirimkan. Kami menerima transfer via BCA,
+            Mandiri, BSI, dan QRIS.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <p class="cta-eyebrow">Siap Memulai?</p>
+    <h2>Titipkan Amanah Aqiqah<br>Kepada Kami</h2>
+    <p>Setiap bayi adalah anugerah terindah. Biarkan kami membantu Anda menunaikan sunnah ini dengan sempurna, penuh
+      berkah, dan tanpa beban.</p>
+    <div class="cta-actions">
+      <a href="#paket" class="btn-cta-primary">Lihat Pilihan Paket</a>
+      <a href="https://wa.me/628123456789" class="btn-cta-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+        </svg>
+        Chat WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Barakah <span>Aqiqah</span></div>
+        <p>Layanan aqiqah amanah & terpercaya sejak 2016. Kami hadir untuk membantu keluarga Muslim menunaikan sunnah
+          dengan mudah, nyaman, dan penuh keberkahan.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Layanan</h5>
+        <ul>
+          <li><a href="#">Aqiqah Kambing</a></li>
+          <li><a href="#">Aqiqah Sapi</a></li>
+          <li><a href="#">Paket Masak</a></li>
+          <li><a href="#">Catering Aqiqah</a></li>
+          <li><a href="#">Distribusi Daging</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Informasi</h5>
+        <ul>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Cara Pesan</a></li>
+          <li><a href="#">Hukum Aqiqah</a></li>
+          <li><a href="#">Blog & Tips</a></li>
+          <li><a href="#">Kontak Kami</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontak</h5>
+        <ul>
+          <li><a href="https://wa.me/628123456789">WhatsApp: 0812-3456-789</a></li>
+          <li><a href="mailto:halo@barakahaqiqah.com">halo@barakahaqiqah.com</a></li>
+          <li><a href="#">Jl. Raya Bogor No. 12,<br>Jakarta Timur</a></li>
+          <li><a href="#">Senin–Sabtu, 08.00–20.00</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Barakah Aqiqah. Semua hak dilindungi.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social-link" title="Instagram">📷</a>
+        <a href="#" class="footer-social-link" title="Facebook">📘</a>
+        <a href="#" class="footer-social-link" title="TikTok">🎵</a>
+        <a href="#" class="footer-social-link" title="YouTube">▶</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ toggle
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Smooth nav active state
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--sage)' : '';
+      });
+    });
+  </script>
+</body>
+
+</html>
